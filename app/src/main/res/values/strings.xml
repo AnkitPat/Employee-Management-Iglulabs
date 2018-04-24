@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">EmployeeManagement</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="thumbnail_image">Thumbnail Image</string>
+    <string name="textview">TextView</string>
+    <string name="loading_text">Loading..</string>
+    <string name="apply_for_leave">Apply For Leave +</string>
+    <string name="employee_designation">Employee designation</string>
+    <string name="leave_information"><![CDATA[Leave Information->]]></string>
+    <string name="employee_name">Employee Name</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="save">Save</string>
+    <string name="leave_reason">Leave Reason</string>
+    <string name="cancel">Cancel</string>
+    <string name="no_leaves_status">No Leaves Status</string>
 </resources>

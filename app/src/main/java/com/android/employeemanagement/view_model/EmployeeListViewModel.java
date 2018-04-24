@@ -11,10 +11,15 @@ import java.util.concurrent.TimeUnit;
 import io.reactivex.Observable;
 import io.reactivex.functions.Function;
 
+/**
+ * Created by Ankit on 14/4/18
+ * 
+ * Its the basis view model for creating MVVM in the application.
+ */
 
 public class EmployeeListViewModel {
 
-    EmployeeRepository employeeRepository;
+    public EmployeeRepository employeeRepository;
     public EmployeeListViewModel(EmployeeRepository employeeRepository)
     {
         this.employeeRepository = employeeRepository;
@@ -27,7 +32,7 @@ public class EmployeeListViewModel {
                 .map(new Function<List<Employee>, EmployeeList>() {
                     @Override
                     public EmployeeList apply(List<Employee> employees) throws Exception {
-                        return new EmployeeList(employees.subList(0,10),"List of Emplouyess",null);
+                        return new EmployeeList(employees,"List of Emplouyess",null);
 
                     }
                 });

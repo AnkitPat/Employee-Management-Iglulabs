@@ -15,22 +15,27 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 /**
- * Created by suraj on 14/4/18.
+ * Created by Ankit on 16/4/18.
+ * Recycler List view for displaying data after fetching from server
+ * 
  */
 
 public class EmployeeListAdapter extends RecyclerView.Adapter<EmployeeListAdapter.RecyclerViewHolder> {
 
-    Context context;
-    List<Employee> employeeArrayList;
+    private Context context;
+   private List<Employee> employeeArrayList;
+    private onEmployeeClickListener onItemClick;
     class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
-        TextView titleTextView;
+        TextView titleTextView, designationTextView;
         ImageView thumbnailImage;
-        public RecyclerViewHolder(View itemView) {
+        
+         RecyclerViewHolder(View itemView) {
             super(itemView);
 
             titleTextView = itemView.findViewById(R.id.title_text_view);
             thumbnailImage = itemView.findViewById(R.id.thumbnail_image_view);
+            designationTextView = itemView.findViewById(R.id.designation_text_view);
         }
     }
 
@@ -38,6 +43,7 @@ public class EmployeeListAdapter extends RecyclerView.Adapter<EmployeeListAdapte
     public EmployeeListAdapter(Context context,List<Employee> employeeArrayList){
         this.context = context;
         this.employeeArrayList = employeeArrayList;
+        this.onItemClick = (onEmployeeClickListener) context;
     }
 
     @Override
@@ -47,14 +53,29 @@ public class EmployeeListAdapter extends RecyclerView.Adapter<EmployeeListAdapte
     }
 
     @Override
-    public void onBindViewHolder(RecyclerViewHolder holder, int position) {
+    public void onBindViewHolder(final RecyclerViewHolder holder, int position) {
         holder.titleTextView.setText(employeeArrayList.get(position).employee_name);
-
+        holder.designationTextView.setText(employeeArrayList.get(position).employee_designation);
         Picasso.with(context).load(employeeArrayList.get(position).profile_url).into(holder.thumbnailImage);
+        
+        //Item click listener on employe list, it will load the Detail view for same
+       holder.itemView.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               onItemClick.onEmployeeItemClick(employeeArrayList.get(holder.getAdapterPosition()));
+
+           }
+       }); 
     }
 
     @Override
     public int getItemCount() {
         return employeeArrayList.size();
+    }
+    
+    
+    //Interface for implementing the click listener on list view
+    public interface onEmployeeClickListener {
+        void onEmployeeItemClick(Employee employee);
     }
 }

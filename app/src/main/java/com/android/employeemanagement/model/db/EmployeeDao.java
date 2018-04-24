@@ -12,7 +12,9 @@ import java.util.List;
 import io.reactivex.Single;
 
 /**
- * Created by suraj on 14/4/18.
+ * Created by Ankit on 14/4/18.
+ * 
+ * Interface for making a layer with methods to interact with the database
  */
 
 @Dao

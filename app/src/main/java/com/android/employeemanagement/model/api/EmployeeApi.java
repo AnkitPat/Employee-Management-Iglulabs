@@ -8,7 +8,9 @@ import io.reactivex.Observable;
 import retrofit2.http.GET;
 
 /**
- * Created by suraj on 14/4/18.
+ * Created by Ankit on 15/4/18.
+ * 
+ * Interface for calling Retrofit services
  */
 
 public interface EmployeeApi {
